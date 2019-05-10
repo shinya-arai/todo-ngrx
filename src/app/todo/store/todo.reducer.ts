@@ -1,6 +1,4 @@
-import { Action } from '@ngrx/store';
-import { TodoActionTypes } from './todo.actions';
-
+import { TodoActionTypes, TodoActions } from './todo.actions';
 
 export interface State {
   todoList: string[];
@@ -12,13 +10,12 @@ export const initialState: State = {
   todoItem: '',
 };
 
-export function reducer(state = initialState, action: Action): State {
+export function reducer(state = initialState, action: TodoActions): State {
   switch (action.type) {
     case TodoActionTypes.Input:
-      const { content } = action.payload;
       return {
         ...state,
-        todoItem:
+        todoItem: action.payload.content,
       };
 
     default:
