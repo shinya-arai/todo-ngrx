@@ -1,0 +1,12 @@
+<form (ngSubmit)="create()">
+  <input type="text" name="todoItem$" [(ngModel)]="content">
+</form>
+<button (click)="create()">追加</button>
+
+<ul *ngFor="let todo of todoList$ | async">
+  <li>
+    {{ todo.content }}
+    <button (click)="delete(todo)">削除</button>
+    <button [routerLink]="['detail', todo.id]">詳細</button>
+  </li>
+</ul>
