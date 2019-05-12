@@ -1,6 +1,6 @@
 <form>
-  <input type="text" name="selectedTodo$" [(ngModel)]="selectedTodo$">
+  <input type="text">
 </form>
 <button>更新して戻る</button>
 
-<div>{{ selectedTodo$ | async }}</div>
+<div>Selected: {{ (selectedTodo$ | async).content }}</div>
