@@ -16,6 +16,7 @@ import { getSelectedTodo } from '../store';
 })
 export class TodoDetailComponent implements OnInit {
   selectedTodo$: Observable<Todo>;
+  id: number;
   content: string;
 
   constructor(
@@ -30,7 +31,19 @@ export class TodoDetailComponent implements OnInit {
       this.store.dispatch(new todoActions.Select({ id }));
 
       this.selectedTodo$ = this.store.select(getSelectedTodo);
+
+      this.selectedTodo$.subscribe(state => {
+        this.id = state.id;
+        this.content = state.content;
+      });
     });
+  }
+
+  update(): void {
+    const todo = new Todo(this.id, this.content);
+    this.store.dispatch(new todoActions.Update({ todo }));
+
+    this.location.back();
   }
 
 }
