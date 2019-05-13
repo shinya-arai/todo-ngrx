@@ -34,7 +34,7 @@ export function reducer(state = initialState, action: TodoActions): State {
     case TodoActionTypes.Select:
       return {
         ...state,
-        selectedTodo: state.todoList.find(todo => todo.id === action.payload.id),
+        selectedTodo: state.todoList.find(todo => todo.id === Number(action.payload.id)),
       };
 
     default:

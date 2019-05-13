@@ -1,6 +1,4 @@
-<form>
-  <input type="text">
+<form (ngSubmit)="update()">
+  <input type="text" name="content" [(ngModel)]="content">
 </form>
-<button>更新して戻る</button>
-
-<div>Selected: {{ (selectedTodo$ | async).content }}</div>
+<button (click)="update()">更新して戻る</button>
